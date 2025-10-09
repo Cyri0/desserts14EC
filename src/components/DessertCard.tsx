@@ -1,20 +1,11 @@
-import AddToCartBtn from "./AddToCartBtn"
 
-type DessertType = {
-    name: string,
-    category: string,
-    price: number,
-    image?: {
-        mobile: string,
-        tablet: string,
-        desktop: string
-    }
-}
+import type { DessertType } from "../App"
+import AddToCartBtn from "./AddToCartBtn"
 
 const DessertCard = (props:DessertType) => {
   return (
     <div>
-        <img className="dessert-image" src="" alt="" />
+        <img className="dessert-image" src={props.image.mobile}/>
         <AddToCartBtn/>
         <h6 className="dessert-type">{props.category}</h6>
         <h4 className="dessert-name">{props.name}</h4>

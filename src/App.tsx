@@ -1,13 +1,33 @@
+import { useEffect, useState } from "react"
 import DessertCard from "./components/DessertCard"
 
+export type DessertType = {
+  image: {
+    thumbnail: string,
+    mobile: string,
+    tablet: string,
+    desktop: string
+  },
+  name: string,
+  category: string,
+  price: number
+}
+
 const App = () => {
+  const [desserts, setDesserts] = useState<DessertType[]>([])
+
+  useEffect(()=>{
+    fetch("data.json")
+    .then(res => res.json())
+    .then(data => setDesserts(data))
+  },[])
+
   return (
     <div>
       <h1>Desserts</h1>
-
-      <DessertCard name="Waffle with Berries" category="Waffle" price={12}/>
-
-      <DessertCard name="Almás rétes" category="Rétes" price={1000} />
+      
+      { desserts.map((item) => { 
+        return <DessertCard {...item} />}) }
     </div>
   )
 }
