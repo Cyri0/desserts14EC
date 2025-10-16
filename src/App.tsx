@@ -26,8 +26,11 @@ const App = () => {
     <div>
       <h1>Desserts</h1>
       
+      <section className="cardWrapper">
       { desserts.map((item) => { 
         return <DessertCard {...item} />}) }
+      </section>
+
     </div>
   )
 }
