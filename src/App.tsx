@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import DessertCard from "./components/DessertCard"
+import CartContextProvider from "./context/CartContext"
+import Cart from "./components/Cart"
 
 export type DessertType = {
   image: {
@@ -26,11 +28,14 @@ const App = () => {
     <div>
       <h1>Desserts</h1>
       
+      <CartContextProvider>
+      <Cart />
       <section className="cardWrapper">
       { desserts.map((item) => { 
         return <DessertCard {...item} />}) }
       </section>
 
+      </CartContextProvider>
     </div>
   )
 }
